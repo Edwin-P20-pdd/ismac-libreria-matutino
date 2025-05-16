@@ -8,16 +8,18 @@ public class FacturaDetalle {
     // inyección de dependencias
     private Libro libro;
     private Factura factura;
+    private Autor autor;
 
     public FacturaDetalle() {
     }
 
-    public FacturaDetalle(int idFacturaDetalle, int cantidad, Double subtotal, Libro libro, Factura factura) {
+    public FacturaDetalle(int idFacturaDetalle, int cantidad, Double subtotal, Libro libro, Factura factura, Autor autor) {
         this.idFacturaDetalle = idFacturaDetalle;
         this.cantidad = cantidad;
         this.subtotal = subtotal;
         this.libro = libro;
         this.factura = factura;
+        this.autor = autor;
     }
 
     public int getIdFacturaDetalle() {
@@ -60,6 +62,14 @@ public class FacturaDetalle {
         this.factura = factura;
     }
 
+    public Autor getAutor() {
+        return autor;
+    }
+
+    public void setAutor(Autor autor) {
+        this.autor = autor;
+    }
+
     @Override
     public String toString() {
         return "FacturaDetalle{" +
@@ -68,6 +78,7 @@ public class FacturaDetalle {
                 ", subtotal=" + subtotal +
                 ", libro=" + libro +
                 ", factura=" + factura +
+                ", autor=" + autor +
                 '}';
     }
 }
