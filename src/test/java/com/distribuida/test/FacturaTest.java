@@ -42,6 +42,8 @@ public class FacturaTest {
         );
     }
 
+    // comentario
+
     @Test
     public void testFacturaSetters() throws Exception {
         // Nueva fecha
