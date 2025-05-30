@@ -12,14 +12,14 @@ public class AutorTest {
 
     @BeforeEach
     public  void setup(){
-      autor = new Autor(0001, "Paul", "Silvana", "Ecuador", "Av. de los Andes", "0947538635", "pauli@ejemplo.com");
+        autor = new Autor(1, "Paul", "Silvana", "Ecuador", "Av. de los Andes", "0947538635", "pauli@ejemplo.com");
     }
 
     @Test
     public void TestAutorConstructorAndGetters(){
 
         assertAll("Validar datos Autor, Constructor, y Getters",
-                () -> assertEquals(0001, autor.getIdAutor()),
+                () -> assertEquals(1, autor.getIdAutor()),
                 () -> assertEquals("Paul", autor.getNombre()),
                 () -> assertEquals("Silvana", autor.getApellido()),
                 () -> assertEquals("Ecuador", autor.getPais()),
@@ -56,7 +56,7 @@ public class AutorTest {
     public void testAutorToString(){
         String str = autor.toString();
         assertAll("Validar Datos Autor - ToString",
-                () -> assertTrue(str.contains("0001")),
+                () -> assertTrue(str.contains("1")),
                 () -> assertTrue(str.contains("Paul")),
                 () -> assertTrue(str.contains("Silvana")),
                 () -> assertTrue(str.contains("Ecuador")),
@@ -65,6 +65,5 @@ public class AutorTest {
                 () -> assertTrue(str.contains("pauli@ejemplo.com"))
         );
     }
-
 
 }

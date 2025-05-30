@@ -76,7 +76,7 @@ public class FacturaDetalleTest {
                 () -> assertTrue(str.contains("90.0")),
                 () -> assertTrue(str.contains("Java Intermedio")),
                 () -> assertTrue(str.contains("Carlos")),
-                () -> assertTrue(str.contains("pablo@correo.com"))
+                () -> assertTrue(str.contains("carlos@ejemplo.com"))
         );
     }
 }
