@@ -50,9 +50,9 @@ public class AutorRepositorioTestIntegracion {
 
     @Test
     public void update() {
-        Optional<Autor> autor = autorRepository.findById(1); // cambia el ID según tu DB
+        Optional<Autor> autor = autorRepository.findById(54); // cambia el ID según tu DB
 
-        assertTrue(autor.isPresent(), "El autor con id = 1 debe existir para ser actualizado.");
+        assertTrue(autor.isPresent(), "El autor con id = 54 debe existir para ser actualizado.");
 
         autor.orElse(null).setNombre("Laura Actualizada");
         autor.orElse(null).setApellido("Mendez Modificada");
@@ -69,7 +69,7 @@ public class AutorRepositorioTestIntegracion {
 
     @Test
     public void delete() {
-        int id = 1; // cambia el ID según la DB
+        int id = 54; // cambia el ID según la DB
         if (autorRepository.existsById(id)) {
             autorRepository.deleteById(id);
         }
