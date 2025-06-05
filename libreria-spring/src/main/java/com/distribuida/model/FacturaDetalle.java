@@ -1,25 +1,41 @@
 package com.distribuida.model;
 
-public class FacturaDetalle {
 
+import jakarta.persistence.*;
+
+//@Entity
+//@Table(name = "factura_detalle")
+public class FacturaDetalle {
+//    @Id
+//    @GeneratedValue(strategy = GenerationType.IDENTITY)
+//    @Column(name = "id_factura_detalle")
     private int idFacturaDetalle;
+//    @Column(name = "cantidad")
     private  int cantidad;
+    //@Column(name = "subtotal")
     private Double subtotal;
+
     // inyección de dependencias
+//    @ManyToOne
+//    @JoinColumn(name = "id_libro")
     private Libro libro;
+//    @ManyToOne
+//    @JoinColumn(name = "id_factura")
     private Factura factura;
-    private Autor autor;
+//    @ManyToOne
+//    @JoinColumn(name = "id_autor")
+//    private Autor autor;
 
     public FacturaDetalle() {
     }
 
-    public FacturaDetalle(int idFacturaDetalle, int cantidad, Double subtotal, Libro libro, Factura factura, Autor autor) {
+    public FacturaDetalle(int idFacturaDetalle, int cantidad, Double subtotal, Libro libro, Factura factura) {
         this.idFacturaDetalle = idFacturaDetalle;
         this.cantidad = cantidad;
         this.subtotal = subtotal;
         this.libro = libro;
         this.factura = factura;
-        this.autor = autor;
+        //this.autor = autor;
     }
 
     public int getIdFacturaDetalle() {
@@ -62,13 +78,13 @@ public class FacturaDetalle {
         this.factura = factura;
     }
 
-    public Autor getAutor() {
-        return autor;
-    }
-
-    public void setAutor(Autor autor) {
-        this.autor = autor;
-    }
+//    public Autor getAutor() {
+//        return autor;
+//    }
+//
+//    public void setAutor(Autor autor) {
+//        this.autor = autor;
+//    }
 
     @Override
     public String toString() {
@@ -78,7 +94,7 @@ public class FacturaDetalle {
                 ", subtotal=" + subtotal +
                 ", libro=" + libro +
                 ", factura=" + factura +
-                ", autor=" + autor +
+//                ", autor=" + autor +
                 '}';
     }
 }

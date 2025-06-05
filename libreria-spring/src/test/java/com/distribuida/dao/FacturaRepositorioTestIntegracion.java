@@ -47,19 +47,19 @@ public class FacturaRepositorioTestIntegracion {
 
     @Test
     public void  save(){
-        Optional<Cliente> cliente = clienteRepository.findById(10);
-        Factura factura = new Factura(0, "FAC-090", new Date(), 150.00, 50.00, 200.00, cliente.orElse(null));
+        Optional<Cliente> cliente = clienteRepository.findById(11);
+        Factura factura = new Factura(0, "FAC-091", new Date(), 150.00, 50.00, 200.00, cliente.orElse(null));
         facturaRepository.save(factura);
         assertNotNull(factura.getIdFactura(), "La factura guardada debe tener un id.");
-        assertEquals("FAC-090", factura.getNumFactura());
+        assertEquals("FAC-091", factura.getNumFactura());
     }
 
     @Test
     public void update(){
-        Optional<Factura> facturaExistente = facturaRepository.findById(82);
+        Optional<Factura> facturaExistente = facturaRepository.findById(81);
 
         Optional<Cliente> cliente = clienteRepository.findById(10);
-        assertTrue(facturaExistente.isPresent(), "La factura con id = 82, debe existir para ser actualizada.");
+        assertTrue(facturaExistente.isPresent(), "La factura con id = 81, debe existir para ser actualizada.");
 
         facturaExistente.orElse(null).setNumFactura("FAC-082");
         facturaExistente.orElse(null).setFecha(new Date());
@@ -68,8 +68,9 @@ public class FacturaRepositorioTestIntegracion {
         facturaExistente.orElse(null).setTotal(250.00);
         facturaExistente.orElse(null).setCliente(cliente.orElse(null));
 
-        facturaRepository.save(facturaExistente.orElse(null));
+        Factura facturaActualizada = facturaRepository.save(facturaExistente.orElse(null));
 
+        assertEquals(250.00, facturaActualizada.getTotal());
     }
 
 
@@ -77,6 +78,8 @@ public class FacturaRepositorioTestIntegracion {
     public void delete(){
         if (facturaRepository.existsById(82)){
             facturaRepository.deleteById(82);
+            Optional<Factura> facturaEliminada = facturaRepository. findById(82);
+            assertFalse(facturaEliminada.isPresent());
         }
     }
 
