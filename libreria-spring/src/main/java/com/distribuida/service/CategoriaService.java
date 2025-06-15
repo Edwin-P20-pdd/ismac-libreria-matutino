@@ -13,6 +13,8 @@ public interface CategoriaService {
 
     public Categoria save(Categoria categoria);
 
+    public Categoria update(int id, Categoria categoria);
+
     public void delete(int id);
 
 }

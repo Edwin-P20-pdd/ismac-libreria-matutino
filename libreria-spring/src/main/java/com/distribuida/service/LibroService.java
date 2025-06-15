@@ -1,4 +1,19 @@
 package com.distribuida.service;
 
-public interface LibroService {
+import com.distribuida.model.Libro;
+
+import java.util.List;
+
+public interface LibroService{
+
+    public List<Libro> findAll();
+
+    public Libro findOne(int id);
+
+    public Libro save(Libro libro);
+
+    public Libro update(int id, int idCategoria, int idAutor, Libro libro);
+
+    public void delete(int id);
+
 }

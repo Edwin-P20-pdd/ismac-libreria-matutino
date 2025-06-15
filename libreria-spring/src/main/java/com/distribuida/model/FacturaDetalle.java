@@ -3,28 +3,25 @@ package com.distribuida.model;
 
 import jakarta.persistence.*;
 
-//@Entity
-//@Table(name = "factura_detalle")
+@Entity
+@Table(name = "factura_detalle")
 public class FacturaDetalle {
-//    @Id
-//    @GeneratedValue(strategy = GenerationType.IDENTITY)
-//    @Column(name = "id_factura_detalle")
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id_factura_detalle")
     private int idFacturaDetalle;
-//    @Column(name = "cantidad")
+    @Column(name = "cantidad")
     private  int cantidad;
-    //@Column(name = "subtotal")
+    @Column(name = "subtotal")
     private Double subtotal;
 
     // inyección de dependencias
-//    @ManyToOne
-//    @JoinColumn(name = "id_libro")
+    @ManyToOne
+    @JoinColumn(name = "id_libro")
     private Libro libro;
-//    @ManyToOne
-//    @JoinColumn(name = "id_factura")
+    @ManyToOne
+    @JoinColumn(name = "id_factura")
     private Factura factura;
-//    @ManyToOne
-//    @JoinColumn(name = "id_autor")
-//    private Autor autor;
 
     public FacturaDetalle() {
     }
@@ -35,7 +32,6 @@ public class FacturaDetalle {
         this.subtotal = subtotal;
         this.libro = libro;
         this.factura = factura;
-        //this.autor = autor;
     }
 
     public int getIdFacturaDetalle() {
@@ -78,14 +74,6 @@ public class FacturaDetalle {
         this.factura = factura;
     }
 
-//    public Autor getAutor() {
-//        return autor;
-//    }
-//
-//    public void setAutor(Autor autor) {
-//        this.autor = autor;
-//    }
-
     @Override
     public String toString() {
         return "FacturaDetalle{" +
@@ -94,7 +82,6 @@ public class FacturaDetalle {
                 ", subtotal=" + subtotal +
                 ", libro=" + libro +
                 ", factura=" + factura +
-//                ", autor=" + autor +
                 '}';
     }
 }
