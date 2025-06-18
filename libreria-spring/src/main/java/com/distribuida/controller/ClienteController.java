@@ -13,11 +13,6 @@ import java.util.List;
 public class ClienteController {
 
 
-    // comentario
-    // comentario
-    // comentario// comentario
-
-
     @Autowired
     private ClienteService clienteService;
 
