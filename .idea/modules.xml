@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/.idea/modules/libreria-spring/com.distribuida.proyecto-libreria.libreria-spring.main.iml" filepath="$PROJECT_DIR$/.idea/modules/libreria-spring/com.distribuida.proyecto-libreria.libreria-spring.main.iml" />
       <module fileurl="file://$PROJECT_DIR$/.idea/modules/libreria-spring/proyecto-libreria.libreria-spring.main.iml" filepath="$PROJECT_DIR$/.idea/modules/libreria-spring/proyecto-libreria.libreria-spring.main.iml" />
     </modules>
   </component>
