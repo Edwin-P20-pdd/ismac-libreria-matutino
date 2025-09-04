@@ -1,5 +1,6 @@
 package com.distribuida.service;
 
+
 import com.distribuida.dao.CarritoRepository;
 import com.distribuida.dao.FacturaDetalleRepository;
 import com.distribuida.dao.FacturaRepository;
@@ -27,11 +28,12 @@ public class GuestCheckoutServiceImpl implements GuestCheckoutService{
             FacturaRepository facturaRepository,
             FacturaDetalleRepository facturaDetalleRepository,
             LibroRepository libroRepository
-        ){
+    ){
         this.carritoRepository = carritoRepository;
         this.facturaRepository = facturaRepository;
         this.facturaDetalleRepository = facturaDetalleRepository;
         this.libroRepository = libroRepository;
+
     }
 
     @Override
@@ -40,30 +42,30 @@ public class GuestCheckoutServiceImpl implements GuestCheckoutService{
         var carrito = carritoRepository.findByToken(token)
                 .orElseThrow(() -> new IllegalArgumentException("No existe carrito para el token"));
 
-        if (carrito.getItems() == null || carrito.getItems().isEmpty()){
+        if(carrito.getItems() == null || carrito.getItems().isEmpty()){
             throw new IllegalArgumentException("El carrito está vacio");
         }
-        for (var item: carrito.getItems()){
+        for(var item: carrito.getItems()){
             var libro = item.getLibro();
-            if (libro.getNumEjemplares() < item.getCantidad()){
-                throw new IllegalArgumentException("Stock insuficiente para: " + libro.getTitulo());
+            if(libro.getNumEjemplares() < item.getCantidad()){
+                throw  new IllegalArgumentException("Stock  insuficiente para: "+ libro.getTitulo());
             }
         }
 
-        for (var item: carrito.getItems()){
+        for(var item: carrito.getItems()){
             var libro = item.getLibro();
             libro.setNumEjemplares(libro.getNumEjemplares() - item.getCantidad());
             libroRepository.save(libro);
         }
 
-        String numFactura = "F-" + DateTimeFormatter.ofPattern("yyyyMMddHHmmss")
+        String numFactura = "F-"+ DateTimeFormatter.ofPattern("yyyyMMddHHmmss")
                 .format(LocalDateTime.now());
 
         var factura = CheckoutMapper.construirFacturaDesdeCarrito(carrito, numFactura, IVA);
 
         factura = facturaRepository.save(factura);
-        for (var item: carrito.getItems()){
-            var det = CheckoutMapper.construirDetalle(factura, item);
+        for(var item: carrito.getItems()){
+            var det =CheckoutMapper.construirDetalle(factura, item);
             facturaDetalleRepository.save(det);
         }
 

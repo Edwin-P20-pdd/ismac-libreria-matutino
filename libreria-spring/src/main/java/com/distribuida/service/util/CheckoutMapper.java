@@ -29,8 +29,7 @@ public class CheckoutMapper {
         f.setTotalNeto(subtotal);
         f.setIva(iva);
         f.setTotal(total);
-        return  f;
-
+        return f;
     }
 
     public static FacturaDetalle construirDetalle(Factura factura, CarritoItem item){
@@ -41,7 +40,5 @@ public class CheckoutMapper {
         d.setSubtotal(item.getTotal().doubleValue());
         return d;
     }
-
-
 
 }
