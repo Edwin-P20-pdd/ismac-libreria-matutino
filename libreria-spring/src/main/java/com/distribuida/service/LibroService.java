@@ -12,7 +12,7 @@ public interface LibroService{
 
     public Libro save(Libro libro);
 
-    public Libro update(int id, int idCategoria, int idAutor, Libro libro);
+    public Libro update(int id, Libro libro);
 
     public void delete(int id);
 

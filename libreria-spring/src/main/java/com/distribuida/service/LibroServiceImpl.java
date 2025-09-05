@@ -41,10 +41,10 @@ public class LibroServiceImpl implements LibroService {
     }
 
     @Override
-    public Libro update(int id, int idCategoria, int idAutor, Libro libro) {
+    public Libro update(int id , Libro libro) {
         Libro libroExistente = findOne(id);
-        Optional<Categoria> categoriaExistente = categoriaRepository.findById(idCategoria);
-        Optional<Autor> autorExistente = autorRepository.findById(idAutor);
+//        Optional<Categoria> categoriaExistente = categoriaRepository.findById(idCategoria);
+//        Optional<Autor> autorExistente = autorRepository.findById(idAutor);
 
         if (libroExistente == null) {
             return null;
@@ -63,8 +63,8 @@ public class LibroServiceImpl implements LibroService {
         libroExistente.setPortada(libro.getPortada());
         libroExistente.setPresentacion(libro.getPresentacion());
         libroExistente.setPrecio(libro.getPrecio());
-        libroExistente.setCategoria(categoriaExistente.orElse(null));
-        libroExistente.setAutor(autorExistente.orElse(null));
+//        libroExistente.setCategoria(categoriaExistente.orElse(null));
+//        libroExistente.setAutor(autorExistente.orElse(null));
 
         return libroRepository.save(libroExistente);
     }

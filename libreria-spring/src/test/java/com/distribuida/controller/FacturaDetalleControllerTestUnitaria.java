@@ -87,15 +87,15 @@ public class FacturaDetalleControllerTestUnitaria {
 
     @Test
     public void testUpdateExistente() {
-        when(facturaDetalleService.update(eq(1), eq(1), eq(1), any(FacturaDetalle.class))).thenReturn(facturaDetalle);
-        ResponseEntity<FacturaDetalle> respuesta = facturaDetalleController.update(1, 1, 1, facturaDetalle); // id, idLibro, idFactura
+        when(facturaDetalleService.update(eq(1), any(FacturaDetalle.class))).thenReturn(facturaDetalle);
+        ResponseEntity<FacturaDetalle> respuesta = facturaDetalleController.update(1, facturaDetalle); // id, idLibro, idFactura
         assertEquals(200, respuesta.getStatusCodeValue());
     }
 
     @Test
     public void testUpdateNoExistente() {
-        when(facturaDetalleService.update(eq(2), eq(2), eq(2), any(FacturaDetalle.class))).thenReturn(null);
-        ResponseEntity<FacturaDetalle> respuesta = facturaDetalleController.update(2, 2, 2, facturaDetalle);
+        when(facturaDetalleService.update(eq(2), any(FacturaDetalle.class))).thenReturn(null);
+        ResponseEntity<FacturaDetalle> respuesta = facturaDetalleController.update(2, facturaDetalle);
         assertEquals(404, respuesta.getStatusCodeValue());
     }
 

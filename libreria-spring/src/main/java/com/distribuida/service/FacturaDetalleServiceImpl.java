@@ -41,10 +41,10 @@ public class FacturaDetalleServiceImpl implements FacturaDetalleService {
     }
 
     @Override
-    public FacturaDetalle update(int id, int idLibro, int idFactura, FacturaDetalle detalle) {
+    public FacturaDetalle update(int id, FacturaDetalle detalle) {
         FacturaDetalle detalleExistente = findOne(id);
-        Optional<Libro> libro = libroRepository.findById(idLibro);
-        Optional<Factura> factura = facturaRepository.findById(idFactura);
+//        Optional<Libro> libro = libroRepository.findById(idLibro);
+//        Optional<Factura> factura = facturaRepository.findById(idFactura);
 
         if (detalleExistente == null) {
             return null;
@@ -52,8 +52,8 @@ public class FacturaDetalleServiceImpl implements FacturaDetalleService {
 
         detalleExistente.setCantidad(detalle.getCantidad());
         detalleExistente.setSubtotal(detalle.getSubtotal());
-        detalleExistente.setLibro(libro.orElse(null));
-        detalleExistente.setFactura(factura.orElse(null));
+//        detalleExistente.setLibro(libro.orElse(null));
+//        detalleExistente.setFactura(factura.orElse(null));
 
         return facturaDetalleRepository.save(detalleExistente);
     }

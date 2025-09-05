@@ -84,7 +84,7 @@ public class FacturaControllerTestUnitaria {
 
     @Test
     public void testUpdateExistente() {
-        when(facturaService.update(eq(1), eq(1), any(Factura.class))).thenReturn(factura);
+        when(facturaService.update(eq(1), any(Factura.class))).thenReturn(factura);
         ResponseEntity<Factura> respuesta = facturaController.update(1, 1, factura); // Asumiendo que update(id, idCliente, factura)
         assertEquals(200, respuesta.getStatusCodeValue());
     }
@@ -92,7 +92,7 @@ public class FacturaControllerTestUnitaria {
 
     @Test
     public void testUpdateNoExistente() {
-        when(facturaService.update(eq(2), eq(2), any(Factura.class))).thenReturn(null);
+        when(facturaService.update(eq(2), any(Factura.class))).thenReturn(null);
         ResponseEntity<Factura> respuesta = facturaController.update(2, 2, factura);
         assertEquals(404, respuesta.getStatusCodeValue());
     }

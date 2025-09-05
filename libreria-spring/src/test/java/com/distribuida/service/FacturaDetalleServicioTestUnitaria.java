@@ -99,7 +99,7 @@ public class FacturaDetalleServicioTestUnitaria {
         when(facturaRepository.findById(1)).thenReturn(Optional.of(factura));
         when(facturaDetalleRepository.save(any(FacturaDetalle.class))).thenReturn(detalleActualizado);
 
-        FacturaDetalle resultado = facturaDetalleService.update(1, 1, 1, detalleActualizado);
+        FacturaDetalle resultado = facturaDetalleService.update(1, detalleActualizado);
         assertNotNull(resultado);
         assertEquals(3, resultado.getCantidad());
         assertEquals(150.00, resultado.getSubtotal());

@@ -37,9 +37,9 @@ public class FacturaController {
         return ResponseEntity.ok(nuevaFactura);
     }
 
-    @PutMapping("/{id}/{idCliente}")
-    public ResponseEntity<Factura> update(@PathVariable int id, @PathVariable int idCliente, @RequestBody Factura factura) {
-        Factura facturaActualizada = facturaService.update(id, idCliente, factura);
+    @PutMapping("/{id}")
+    public ResponseEntity<Factura> update(@PathVariable int id, @RequestBody Factura factura) {
+        Factura facturaActualizada = facturaService.update(id, factura);
         if (facturaActualizada == null) {
             return ResponseEntity.notFound().build();
         }
